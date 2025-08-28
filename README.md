@@ -18,7 +18,9 @@ This project is for **educational and research purposes only**. ARC4 is consider
 ├── prga.sv          # Pseudo-Random Generation Algorithm
 ├── s_mem.sv         # State memory (RC4 S-box, 256 bytes)
 ├── pt_mem.sv        # Plaintext buffer memory
+├── ct_mem.sv        # Ciphertext memory
 ├── doublecrack.sv   # Parallel cracker (two engines with disjoint keyspaces)
+├── top.sv           # Top level module compatible with the DE1SOC
 └── README.md        # Project documentation
 ```
 
@@ -69,15 +71,10 @@ This project is for **educational and research purposes only**. ARC4 is consider
 
 ## Usage
 
-### Simulation
-1. Provide a ciphertext file/memory with known key.  
-2. Compile and run with a simulator (e.g., **ModelSim**, **Verilator**, or **Synopsys VCS**).  
-3. Observe the `key_valid` signal when a key is found.  
-
-### FPGA Deployment
-1. Instantiate `doublecrack` (or more engines for speed).  
-2. Map `ct_mem` and `pt_mem` to on-chip RAM or external DRAM.  
-3. Use UART/JTAG/AXI to load ciphertext and monitor outputs.  
+###  FPGA Deployment
+1. Compile and run on a De1SOC 
+2. Provide a ciphertext file/memory with known key.  
+3. Observe the plaintext buffer once a key is found. 
 
 ---
 
@@ -94,11 +91,7 @@ This project is for **educational and research purposes only**. ARC4 is consider
 
 - [RC4 Wikipedia](https://en.wikipedia.org/wiki/RC4)  
 - "Applied Cryptography" by Bruce Schneier  
-- FPGA/Hardware Security coursework (various universities)  
+- FPGA/Hardware Security coursework 
 
 ---
 
-## Disclaimer
-
-This code is provided **as-is** for **educational purposes** only.  
-Do **not** use this project for unauthorized access, password cracking, or illegal activities.  
